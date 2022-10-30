@@ -1,6 +1,8 @@
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Hosting;
 using TomsTools.Commands;
+using TomsTools.Formatters;
 using TomsTools.General;
 using TomsTools.Guids;
 
@@ -22,10 +24,6 @@ namespace TomsTools.App.Forms
 			ServiceProvider = host.Services;
 
 			Application.Run(ServiceProvider.GetRequiredService<Form1>());
-			//// To customize application configuration such as set high DPI settings or default font,
-			//// see https://aka.ms/applicationconfiguration.
-			//ApplicationConfiguration.Initialize();
-			//Application.Run(new Form1());
 		}
 
 		public static IServiceProvider? ServiceProvider { get; private set; }
@@ -34,8 +32,13 @@ namespace TomsTools.App.Forms
 			return Host.CreateDefaultBuilder()
 				.ConfigureServices((context, services) => {
 					services.AddSingleton<CommandManager>();
-					services.AddTransient<IGuidGenerator, GuidGenerator>();
-					services.AddTransient<IClipboardTool, WindowsClipboardTool>();
+					services.AddScoped<IGuidGenerator, GuidGenerator>();
+					//services.AddTransient<IStringFormatter, JsonStringFormatter>();
+					services.TryAddEnumerable(new[]
+					{
+						ServiceDescriptor.Scoped<IStringFormatter, JsonStringFormatter>(),
+					});
+					services.AddScoped<IClipboardTool, WindowsClipboardTool>();
 					services.AddTransient<Form1>();
 				});
 		}

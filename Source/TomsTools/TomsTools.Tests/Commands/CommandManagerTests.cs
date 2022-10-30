@@ -46,7 +46,7 @@ namespace TomsTools.Tests.Commands
 			var result = _sut.GetCommandHistory();
 
 			// Assert
-			Assert.That(result, Does.Contain("Guid"), "CommandManager failed to get history of commands");
+			Assert.That(result, Does.Contain(command.ToString()), "CommandManager failed to get history of commands");
 		}
 	}
 }

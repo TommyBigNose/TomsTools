@@ -7,18 +7,19 @@ using TomsTools.Guids;
 using System.Windows;
 using System.Windows.Forms;
 using TomsTools.General;
+using TomsTools.Formatters;
 
 namespace TomsTools.Commands
 {
-	public class GuidGeneratorCommand : ICommand
+	public class JsonStringFormatterCommand : ICommand
 	{
-		private readonly IGuidGenerator _guidGenerator;
+		private readonly IStringFormatter _stringFormatter;
 		private readonly IClipboardTool _clipboardTool;
-		private Guid _guid;
+		private string _json;
 
-		public GuidGeneratorCommand(IGuidGenerator generator, IClipboardTool clipboardTool)
+		public JsonStringFormatterCommand(IStringFormatter stringFormatter, IClipboardTool clipboardTool)
 		{
-			_guidGenerator = generator;
+			_stringFormatter = stringFormatter;
 			_clipboardTool = clipboardTool;
 		}
 
@@ -30,8 +31,15 @@ namespace TomsTools.Commands
 
 		public void Execute()
 		{
-			_guid = _guidGenerator.GenerateGuid();
-			_clipboardTool.SetText(_guid.ToString());
+			try
+			{
+				_json = _stringFormatter.Format(_clipboardTool.GetText());
+				_clipboardTool.SetText(_json);
+			}
+			catch
+			{
+				_clipboardTool.SetText(_clipboardTool.GetText());
+			}
 		}
 
 		public void Undo()
@@ -41,7 +49,7 @@ namespace TomsTools.Commands
 
 		public override string ToString()
 		{
-			return $"{_guid}";
+			return $"{_json}";
 		}
 	}
 }

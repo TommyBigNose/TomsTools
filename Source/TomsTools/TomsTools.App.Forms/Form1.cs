@@ -1,4 +1,5 @@
 using TomsTools.Commands;
+using TomsTools.Formatters;
 
 namespace TomsTools.App.Forms
 {
@@ -13,6 +14,19 @@ namespace TomsTools.App.Forms
 		{
 			ICommand command = new GuidGeneratorCommand(GuidGenerator, ClipboardTool);
 			CommandManager.Invoke(command);
+			UpdateCommandHistory();
+		}
+
+		private void btnFormatJson_Click(object sender, EventArgs e)
+		{
+			IStringFormatter formatter = StringFormatters.FirstOrDefault(_ => _.GetType() == typeof(JsonStringFormatter))!;
+			ICommand command = new JsonStringFormatterCommand(formatter, ClipboardTool);
+			CommandManager.Invoke(command);
+			UpdateCommandHistory();
+		}
+
+		private void UpdateCommandHistory()
+		{
 			txtCommandHistory.Text = CommandManager.GetCommandHistory();
 		}
 	}

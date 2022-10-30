@@ -8,5 +8,5 @@ Only Windows compatible (using Windows forms' Clipboard code)
 
  * ✅ Command History
  * ✅ Guid Generator
- * ❌ JSON formatter
+ * ✅ JSON formatter
  * ❌ Remove Double Quotes in Clipboard

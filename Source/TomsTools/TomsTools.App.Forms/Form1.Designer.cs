@@ -1,5 +1,5 @@
-﻿using System.ComponentModel.Design;
-using TomsTools.Commands;
+﻿using TomsTools.Commands;
+using TomsTools.Formatters;
 using TomsTools.General;
 using TomsTools.Guids;
 
@@ -26,19 +26,17 @@ namespace TomsTools.App.Forms
 		}
 
 		public CommandManager CommandManager { get; }
-		public IGuidGenerator GuidGenerator { get; }
 		public IClipboardTool ClipboardTool { get; }
-
-		public Form1(CommandManager commandManager, IGuidGenerator guidGenerator, IClipboardTool clipboardTool)
+		public IGuidGenerator GuidGenerator { get; }
+		public IEnumerable<IStringFormatter> StringFormatters { get; }
+		
+		public Form1(CommandManager commandManager, IClipboardTool clipboardTool, IGuidGenerator guidGenerator, IEnumerable<IStringFormatter> stringFormatters)
 		{
 			InitializeComponent();
 			CommandManager = commandManager;
-			GuidGenerator = guidGenerator;
 			ClipboardTool = clipboardTool;
-
-			//ICommand command = new GenerateGuidCommand(guidGenerator, clipboardTool);
-			//commandManager.Invoke(command);
-			//MessageBox.Show(command.ToString());
+			GuidGenerator = guidGenerator;
+			StringFormatters = stringFormatters;
 		}
 
 		#region Windows Form Designer generated code
@@ -52,6 +50,7 @@ namespace TomsTools.App.Forms
 			this.btnGenerateGuid = new System.Windows.Forms.Button();
 			this.txtCommandHistory = new System.Windows.Forms.TextBox();
 			this.lblCommandHistory = new System.Windows.Forms.Label();
+			this.btnFormatJson = new System.Windows.Forms.Button();
 			this.SuspendLayout();
 			// 
 			// btnGenerateGuid
@@ -83,11 +82,22 @@ namespace TomsTools.App.Forms
 			this.lblCommandHistory.TabIndex = 2;
 			this.lblCommandHistory.Text = "Command History";
 			// 
+			// btnFormatJson
+			// 
+			this.btnFormatJson.Location = new System.Drawing.Point(12, 41);
+			this.btnFormatJson.Name = "btnFormatJson";
+			this.btnFormatJson.Size = new System.Drawing.Size(96, 23);
+			this.btnFormatJson.TabIndex = 3;
+			this.btnFormatJson.Text = "Format JSON";
+			this.btnFormatJson.UseVisualStyleBackColor = true;
+			this.btnFormatJson.Click += new System.EventHandler(this.btnFormatJson_Click);
+			// 
 			// Form1
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(800, 450);
+			this.Controls.Add(this.btnFormatJson);
 			this.Controls.Add(this.lblCommandHistory);
 			this.Controls.Add(this.txtCommandHistory);
 			this.Controls.Add(this.btnGenerateGuid);
@@ -103,5 +113,6 @@ namespace TomsTools.App.Forms
 		private Button btnGenerateGuid;
 		private TextBox txtCommandHistory;
 		private Label lblCommandHistory;
+		private Button btnFormatJson;
 	}
 }
