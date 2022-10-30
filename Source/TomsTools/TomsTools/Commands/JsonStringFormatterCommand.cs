@@ -21,6 +21,7 @@ namespace TomsTools.Commands
 		{
 			_stringFormatter = stringFormatter;
 			_clipboardTool = clipboardTool;
+			_json = string.Empty;
 		}
 
 

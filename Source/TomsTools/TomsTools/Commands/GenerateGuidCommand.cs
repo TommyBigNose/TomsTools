@@ -22,7 +22,6 @@ namespace TomsTools.Commands
 			_clipboardTool = clipboardTool;
 		}
 
-
 		public bool CanExecute()
 		{
 			return true;

@@ -49,9 +49,10 @@ namespace TomsTools.Tests.Formatters
 
 	}
 
+	// {"Id":"FAKE-123","Name":"Test Guy"}
 	internal class TestModel
 	{
-		public string Id { get; set; }
-		public string Name { get; set; }
+		public string? Id { get; set; }
+		public string? Name { get; set; }
 	}
 }
