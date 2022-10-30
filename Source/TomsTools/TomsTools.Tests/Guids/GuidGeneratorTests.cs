@@ -2,7 +2,7 @@ using TomsTools.Guids;
 
 namespace TomsTools.Tests.Guids
 {
-	public class GuidGeneratorTests
+	public class ClipboardToolTests
 	{
 		private IGuidGenerator _sut;
 
@@ -22,8 +22,6 @@ namespace TomsTools.Tests.Guids
 		{
 			// Arrange
 			// Act
-			
-
 			// Assert
 			Assert.DoesNotThrow(() => _sut.GenerateGuid(), "GuidGenerator failed to generate a new guid");
 		}

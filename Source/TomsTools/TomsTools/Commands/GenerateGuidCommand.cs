@@ -10,13 +10,13 @@ using TomsTools.General;
 
 namespace TomsTools.Commands
 {
-	public class GenerateGuidCommand : ICommand
+	public class GuidGeneratorCommand : ICommand
 	{
 		private readonly IGuidGenerator _guidGenerator;
 		private readonly IClipboardTool _clipboardTool;
 		private Guid _guid;
 
-		public GenerateGuidCommand(IGuidGenerator generator, IClipboardTool clipboardTool)
+		public GuidGeneratorCommand(IGuidGenerator generator, IClipboardTool clipboardTool)
 		{
 			_guidGenerator = generator;
 			_clipboardTool = clipboardTool;
@@ -41,7 +41,7 @@ namespace TomsTools.Commands
 
 		public override string ToString()
 		{
-			return $"{nameof(GenerateGuidCommand)} - Guid: {_guid}";
+			return $"{nameof(GuidGeneratorCommand)} - Guid: {_guid}";
 		}
 	}
 }

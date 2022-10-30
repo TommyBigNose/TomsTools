@@ -26,7 +26,7 @@ namespace TomsTools.Tests.Commands
 			// Arrange
 			IGuidGenerator guidGenerator = new GuidGenerator();
 			IClipboardTool clipboardTool = new WindowsClipboardTool();
-			ICommand command = new GenerateGuidCommand(guidGenerator, clipboardTool);
+			ICommand command = new GuidGeneratorCommand(guidGenerator, clipboardTool);
 
 			// Act
 			// Assert
@@ -39,7 +39,7 @@ namespace TomsTools.Tests.Commands
 			// Arrange
 			IGuidGenerator guidGenerator = new GuidGenerator();
 			IClipboardTool clipboardTool = new WindowsClipboardTool();
-			ICommand command = new GenerateGuidCommand(guidGenerator, clipboardTool);
+			ICommand command = new GuidGeneratorCommand(guidGenerator, clipboardTool);
 
 			// Act
 			_sut.Invoke(command);
