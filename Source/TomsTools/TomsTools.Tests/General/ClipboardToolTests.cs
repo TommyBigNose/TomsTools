@@ -18,13 +18,35 @@ namespace TomsTools.Tests.General
 		{
 		}
 
-		[Test]
-		public void Should_SetText()
+		[TestCase("Test123")]
+		public void Should_SetText(string text)
 		{
 			// Arrange
 			// Act
 			// Assert
-			Assert.DoesNotThrow(() => _sut.SetText("test"), "WindowsClipboardTool failed to set clipboard");
+			Assert.DoesNotThrow(() => _sut.SetText(text), "WindowsClipboardTool failed to set clipboard");
+		}
+
+		[Test]
+		public void Should_Error_When_SettingTextWithNothing()
+		{
+			// Arrange
+			// Act
+			// Assert
+			Assert.Throws<ArgumentNullException>(() => _sut.SetText(string.Empty), "WindowsClipboardTool allowed empty value clipboard");
+		}
+
+		[TestCase("Test123")]
+		[TestCase("XXX")]
+		public void Should_GetLastSetText_When_SetTextWasUsed(string text)
+		{
+			// Arrange
+			// Act
+			_sut.SetText(text);
+			var result = _sut.GetText();
+
+			// Assert
+			Assert.That(result, Is.EqualTo(text), "WindowsClipboardTool did not set clipboard text as to specified value");
 		}
 	}
 }

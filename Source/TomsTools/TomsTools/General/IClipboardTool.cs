@@ -9,5 +9,6 @@ namespace TomsTools.General
 	public interface IClipboardTool
 	{
 		void SetText(string text);
+		string GetText();
 	}
 }
