@@ -4,14 +4,14 @@ namespace TomsTools.Commands
 {
 	public class CommandManager
 	{
-		private Stack<ICommand> commands = new Stack<ICommand>();
+		private readonly Stack<ICommand> commands = new();
 
-		public void Invoke(ICommand command)
+		public void Invoke(ICommand command, string[]? args = null)
 		{
 			if (command.CanExecute())
 			{
 				commands.Push(command);
-				command.Execute();
+				command.Execute(args);
 			}
 		}
 

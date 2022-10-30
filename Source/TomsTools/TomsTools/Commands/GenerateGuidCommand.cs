@@ -27,7 +27,7 @@ namespace TomsTools.Commands
 			return true;
 		}
 
-		public void Execute()
+		public void Execute(string[]? args = null)
 		{
 			_guid = _guidGenerator.GenerateGuid();
 			_clipboardTool.SetText(_guid.ToString());

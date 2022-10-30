@@ -25,6 +25,14 @@ namespace TomsTools.App.Forms
 			UpdateCommandHistory();
 		}
 
+		private void btnReplace_Click(object sender, EventArgs e)
+		{
+			ICommand command = new StringReplacerCommand(StringReplacer, ClipboardTool);
+			string[] args = new string[] { txtReplaceOld.Text, txtReplaceNew.Text };
+			CommandManager.Invoke(command, args);
+			UpdateCommandHistory();
+		}
+
 		private void UpdateCommandHistory()
 		{
 			txtCommandHistory.Text = CommandManager.GetCommandHistory();

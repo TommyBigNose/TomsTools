@@ -2,7 +2,7 @@
 {
 	public interface ICommand
 	{
-		void Execute();
+		void Execute(string[]? args = null);
 		bool CanExecute();
 		void Undo();
 		string ToString();

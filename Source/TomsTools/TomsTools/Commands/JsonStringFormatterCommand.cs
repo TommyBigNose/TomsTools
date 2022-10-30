@@ -30,7 +30,7 @@ namespace TomsTools.Commands
 			return true;
 		}
 
-		public void Execute()
+		public void Execute(string[]? args = null)
 		{
 			try
 			{

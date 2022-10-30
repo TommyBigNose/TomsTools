@@ -33,6 +33,7 @@ namespace TomsTools.App.Forms
 				.ConfigureServices((context, services) => {
 					services.AddSingleton<CommandManager>();
 					services.AddScoped<IGuidGenerator, GuidGenerator>();
+					services.AddScoped<IStringReplacer, StringReplacer>();
 					services.TryAddEnumerable(new[]
 					{
 						ServiceDescriptor.Scoped<IStringFormatter, JsonStringFormatter>(),
