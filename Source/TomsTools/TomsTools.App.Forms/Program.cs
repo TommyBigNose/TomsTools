@@ -28,7 +28,7 @@ namespace TomsTools.App.Forms
 			//Application.Run(new Form1());
 		}
 
-		public static IServiceProvider ServiceProvider { get; private set; }
+		public static IServiceProvider? ServiceProvider { get; private set; }
 		static IHostBuilder CreateHostBuilder()
 		{
 			return Host.CreateDefaultBuilder()

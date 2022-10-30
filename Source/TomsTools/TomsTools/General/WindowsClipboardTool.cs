@@ -13,7 +13,8 @@ namespace TomsTools.General
 		{
 			if(string.IsNullOrEmpty(text))
 			{
-				throw new ArgumentNullException("Cannot set clipboard to null or empty value");
+				string message = "Cannot set clipboard to null or empty value";
+				throw new ArgumentNullException(message);
 			}
 			Thread thread = new(() => Clipboard.SetText(text));
 			thread.SetApartmentState(ApartmentState.STA); //Set the thread to STA
