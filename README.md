@@ -1,12 +1,14 @@
 # Tom's Tools
-Just a bunch of useful tools that I wanted to have available to me when developing/browsing, whatever while coding.
+Just a bunch of useful tools that I wanted to have available to me when developing, browsing, and whatever while coding.
 
-## Warning
+# Warning
 Only Windows compatible (using Windows forms' Clipboard code)
 
-## Roadmap
-
+# Roadmap
+## General
  * ✅ Command History
+
+## Clipboard related tools
  * ✅ Guid Generator
- * ✅ JSON formatter
- * ❌ Remove Double Quotes in Clipboard
+ * ✅ JSON Formatter
+ * ✅ Replace Characters
