@@ -12,11 +12,19 @@ namespace TomsTools.Formatters
 	{
 		public string Cleanse(string text)
 		{
-			HtmlDocument doc = new HtmlDocument();
-			text = $"<body>{text}</body>";
-			doc.LoadHtml(text);
-			string cleansedHtml = doc.DocumentNode.SelectSingleNode("//body").InnerText;
-			return cleansedHtml;
+			try
+			{
+				HtmlDocument doc = new HtmlDocument();
+				text = $"<body>{text}</body>";
+				doc.LoadHtml(text);
+				string cleansedHtml = doc.DocumentNode.SelectSingleNode("//body").InnerText;
+				return cleansedHtml;
+			}
+			catch
+			{
+				string message = "Current text in clipboard is valid HTML";
+				throw new ArgumentException(message);
+			}
 		}
 	}
 }
