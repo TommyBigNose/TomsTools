@@ -12,3 +12,4 @@ Only Windows compatible (using Windows forms' Clipboard code)
  * ✅ Guid Generator
  * ✅ JSON Formatter
  * ✅ Replace Characters
+ * ✅ HTML Cleanser
