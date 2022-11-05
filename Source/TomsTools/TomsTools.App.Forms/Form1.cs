@@ -33,6 +33,14 @@ namespace TomsTools.App.Forms
 			UpdateCommandHistory();
 		}
 
+		private void btnHtmlCleanser_Click(object sender, EventArgs e)
+		{
+			IStringCleanser cleanser = new HtmlStringCleanser();
+			ICommand command = new HtmlStringCleanserCommand(cleanser, ClipboardTool);
+			CommandManager.Invoke(command);
+			UpdateCommandHistory();
+		}
+
 		private void UpdateCommandHistory()
 		{
 			txtCommandHistory.Text = CommandManager.GetCommandHistory();

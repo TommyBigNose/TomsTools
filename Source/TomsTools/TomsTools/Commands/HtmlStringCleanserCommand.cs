@@ -1,0 +1,56 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using TomsTools.Guids;
+using System.Windows;
+using System.Windows.Forms;
+using TomsTools.General;
+using TomsTools.Formatters;
+
+namespace TomsTools.Commands
+{
+	public class HtmlStringCleanserCommand : ICommand
+	{
+		private readonly IStringCleanser _stringCleanser;
+		private readonly IClipboardTool _clipboardTool;
+		private string _html;
+
+		public HtmlStringCleanserCommand(IStringCleanser stringCleanser, IClipboardTool clipboardTool)
+		{
+			_stringCleanser = stringCleanser;
+			_clipboardTool = clipboardTool;
+			_html = string.Empty;
+		}
+
+
+		public bool CanExecute()
+		{
+			return true;
+		}
+
+		public void Execute(string[]? args = null)
+		{
+			try
+			{
+				_html = _stringCleanser.Cleanse(_clipboardTool.GetText());
+				_clipboardTool.SetText(_html);
+			}
+			catch
+			{
+				_clipboardTool.SetText(_clipboardTool.GetText());
+			}
+		}
+
+		public void Undo()
+		{
+			throw new NotImplementedException();
+		}
+
+		public override string ToString()
+		{
+			return $"{_html}";
+		}
+	}
+}

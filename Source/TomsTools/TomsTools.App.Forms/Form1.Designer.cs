@@ -29,15 +29,17 @@ namespace TomsTools.App.Forms
 		public IClipboardTool ClipboardTool { get; }
 		public IGuidGenerator GuidGenerator { get; }
 		public IStringReplacer StringReplacer { get; }
+		public IStringCleanser HtmlStringCleanser { get; }
 		public IEnumerable<IStringFormatter> StringFormatters { get; }
 		
-		public Form1(CommandManager commandManager, IClipboardTool clipboardTool, IGuidGenerator guidGenerator, IStringReplacer stringReplacer, IEnumerable<IStringFormatter> stringFormatters)
+		public Form1(CommandManager commandManager, IClipboardTool clipboardTool, IGuidGenerator guidGenerator, IStringReplacer stringReplacer, IStringCleanser stringCleanser, IEnumerable<IStringFormatter> stringFormatters)
 		{
 			InitializeComponent();
 			CommandManager = commandManager;
 			ClipboardTool = clipboardTool;
 			GuidGenerator = guidGenerator;
 			StringReplacer = stringReplacer;
+			HtmlStringCleanser = stringCleanser;
 			StringFormatters = stringFormatters;
 		}
 
@@ -58,6 +60,7 @@ namespace TomsTools.App.Forms
 			this.txtReplaceOld = new System.Windows.Forms.TextBox();
 			this.txtReplaceNew = new System.Windows.Forms.TextBox();
 			this.lblWith = new System.Windows.Forms.Label();
+			this.btnHtmlCleanser = new System.Windows.Forms.Button();
 			this.SuspendLayout();
 			// 
 			// btnGenerateGuid
@@ -134,11 +137,22 @@ namespace TomsTools.App.Forms
 			this.lblWith.TabIndex = 7;
 			this.lblWith.Text = "with...";
 			// 
+			// btnHtmlCleanser
+			// 
+			this.btnHtmlCleanser.Location = new System.Drawing.Point(12, 100);
+			this.btnHtmlCleanser.Name = "btnHtmlCleanser";
+			this.btnHtmlCleanser.Size = new System.Drawing.Size(100, 23);
+			this.btnHtmlCleanser.TabIndex = 8;
+			this.btnHtmlCleanser.Text = "HTML Cleanser";
+			this.btnHtmlCleanser.UseVisualStyleBackColor = true;
+			this.btnHtmlCleanser.Click += new System.EventHandler(this.btnHtmlCleanser_Click);
+			// 
 			// Form1
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(800, 450);
+			this.Controls.Add(this.btnHtmlCleanser);
 			this.Controls.Add(this.lblWith);
 			this.Controls.Add(this.txtReplaceNew);
 			this.Controls.Add(this.txtReplaceOld);
@@ -165,5 +179,6 @@ namespace TomsTools.App.Forms
 		private TextBox txtReplaceOld;
 		private TextBox txtReplaceNew;
 		private Label lblWith;
+		private Button btnHtmlCleanser;
 	}
 }
