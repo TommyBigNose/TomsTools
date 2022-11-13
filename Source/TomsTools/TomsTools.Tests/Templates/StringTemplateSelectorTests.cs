@@ -4,17 +4,20 @@ using TomsTools.Guids;
 using System.Text.Json;
 using NUnit.Framework.Constraints;
 using TomsTools.Templates;
+using TomsTools.Data;
 
 namespace TomsTools.Tests.Templates
 {
 	public class LocalDataSourceTests
 	{
+		private IDataSource _dataSource;
 		private ITemplateSelector _sut;
 
 		[SetUp]
 		public void Setup()
 		{
-			_sut = new StringTemplateSelector();
+			_dataSource = new LocalDataSource();
+			_sut = new StringTemplateSelector(_dataSource);
 		}
 
 		[TearDown]

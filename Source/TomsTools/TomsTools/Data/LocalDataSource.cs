@@ -11,7 +11,33 @@ namespace TomsTools.Data
 	{
 		public IEnumerable<StringTemplate> GetStringTemplates()
 		{
-			throw new NotImplementedException();
+			IEnumerable<StringTemplate> templates = new List<StringTemplate>()
+			{
+				new StringTemplate()
+				{
+					Id = 0,
+					Name = "Unit Test",
+					Value = @"
+		[Test]
+		public void Should_Pass_When_Valid()
+		{
+			// Arrange
+			// Act
+			var result = _sut.Test();
+
+			// Assert
+			Assert.That(result, Is.Not.Null, ""Result was null"");
+		}"
+				},
+				new StringTemplate()
+				{
+					Id = 1,
+					Name = "Sample",
+					Value = @"This is just a fun sample template!"
+				}
+			};
+
+			return templates;
 		}
 	}
 }

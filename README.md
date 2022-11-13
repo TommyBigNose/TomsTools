@@ -13,3 +13,4 @@ Only Windows compatible (using Windows forms' Clipboard code)
  * ✅ JSON Formatter
  * ✅ Replace Characters
  * ✅ HTML Cleanser
+ * ❌ String Templates
