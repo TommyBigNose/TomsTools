@@ -2,9 +2,11 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Hosting;
 using TomsTools.Commands;
+using TomsTools.Data;
 using TomsTools.Formatters;
 using TomsTools.General;
 using TomsTools.Guids;
+using TomsTools.Templates;
 
 namespace TomsTools.App.Forms
 {
@@ -32,9 +34,11 @@ namespace TomsTools.App.Forms
 			return Host.CreateDefaultBuilder()
 				.ConfigureServices((context, services) => {
 					services.AddSingleton<CommandManager>();
+					services.AddSingleton<IDataSource, LocalDataSource>();
 					services.AddScoped<IGuidGenerator, GuidGenerator>();
 					services.AddScoped<IStringReplacer, StringReplacer>();
 					services.AddScoped<IStringCleanser, HtmlStringCleanser>();
+					services.AddScoped<ITemplateSelector, StringTemplateSelector>();
 					services.TryAddEnumerable(new[]
 					{
 						ServiceDescriptor.Scoped<IStringFormatter, JsonStringFormatter>(),

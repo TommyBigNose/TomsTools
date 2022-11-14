@@ -1,7 +1,9 @@
 ﻿using TomsTools.Commands;
+using TomsTools.Data;
 using TomsTools.Formatters;
 using TomsTools.General;
 using TomsTools.Guids;
+using TomsTools.Templates;
 
 namespace TomsTools.App.Forms
 {
@@ -26,20 +28,24 @@ namespace TomsTools.App.Forms
 		}
 
 		public CommandManager CommandManager { get; }
+		public IDataSource DataSource { get; }
 		public IClipboardTool ClipboardTool { get; }
 		public IGuidGenerator GuidGenerator { get; }
 		public IStringReplacer StringReplacer { get; }
 		public IStringCleanser HtmlStringCleanser { get; }
+		public ITemplateSelector TemplateSelector { get; }
 		public IEnumerable<IStringFormatter> StringFormatters { get; }
 		
-		public Form1(CommandManager commandManager, IClipboardTool clipboardTool, IGuidGenerator guidGenerator, IStringReplacer stringReplacer, IStringCleanser stringCleanser, IEnumerable<IStringFormatter> stringFormatters)
+		public Form1(CommandManager commandManager, IDataSource dataSource, IClipboardTool clipboardTool, IGuidGenerator guidGenerator, IStringReplacer stringReplacer, IStringCleanser stringCleanser, ITemplateSelector templateSelector, IEnumerable<IStringFormatter> stringFormatters)
 		{
 			InitializeComponent();
+			DataSource = dataSource;
 			CommandManager = commandManager;
 			ClipboardTool = clipboardTool;
 			GuidGenerator = guidGenerator;
 			StringReplacer = stringReplacer;
 			HtmlStringCleanser = stringCleanser;
+			TemplateSelector = templateSelector;
 			StringFormatters = stringFormatters;
 		}
 
@@ -61,6 +67,8 @@ namespace TomsTools.App.Forms
 			this.txtReplaceNew = new System.Windows.Forms.TextBox();
 			this.lblWith = new System.Windows.Forms.Label();
 			this.btnHtmlCleanser = new System.Windows.Forms.Button();
+			this.btnCopyTemplate = new System.Windows.Forms.Button();
+			this.cmbTemplates = new System.Windows.Forms.ComboBox();
 			this.SuspendLayout();
 			// 
 			// btnGenerateGuid
@@ -147,11 +155,33 @@ namespace TomsTools.App.Forms
 			this.btnHtmlCleanser.UseVisualStyleBackColor = true;
 			this.btnHtmlCleanser.Click += new System.EventHandler(this.btnHtmlCleanser_Click);
 			// 
+			// btnCopyTemplate
+			// 
+			this.btnCopyTemplate.Location = new System.Drawing.Point(12, 129);
+			this.btnCopyTemplate.Name = "btnCopyTemplate";
+			this.btnCopyTemplate.Size = new System.Drawing.Size(100, 23);
+			this.btnCopyTemplate.TabIndex = 9;
+			this.btnCopyTemplate.Text = "Copy Template";
+			this.btnCopyTemplate.UseVisualStyleBackColor = true;
+			this.btnCopyTemplate.Click += new System.EventHandler(this.btnCopyTemplate_Click);
+			// 
+			// cmbTemplates
+			// 
+			this.cmbTemplates.AllowDrop = true;
+			this.cmbTemplates.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.cmbTemplates.FormattingEnabled = true;
+			this.cmbTemplates.Location = new System.Drawing.Point(118, 129);
+			this.cmbTemplates.Name = "cmbTemplates";
+			this.cmbTemplates.Size = new System.Drawing.Size(158, 23);
+			this.cmbTemplates.TabIndex = 10;
+			// 
 			// Form1
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(800, 450);
+			this.Controls.Add(this.cmbTemplates);
+			this.Controls.Add(this.btnCopyTemplate);
 			this.Controls.Add(this.btnHtmlCleanser);
 			this.Controls.Add(this.lblWith);
 			this.Controls.Add(this.txtReplaceNew);
@@ -164,6 +194,7 @@ namespace TomsTools.App.Forms
 			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.Name = "Form1";
 			this.Text = "Tom\'s Tools";
+			this.Load += new System.EventHandler(this.Form1_Load);
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -180,5 +211,7 @@ namespace TomsTools.App.Forms
 		private TextBox txtReplaceNew;
 		private Label lblWith;
 		private Button btnHtmlCleanser;
+		private Button btnCopyTemplate;
+		private ComboBox cmbTemplates;
 	}
 }
