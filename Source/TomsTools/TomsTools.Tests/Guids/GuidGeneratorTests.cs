@@ -2,7 +2,7 @@ using TomsTools.Guids;
 
 namespace TomsTools.Tests.Guids
 {
-	public class ClipboardToolTests
+	public class GuidGeneratorTests
 	{
 		private IGuidGenerator _sut;
 

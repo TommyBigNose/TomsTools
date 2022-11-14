@@ -8,7 +8,7 @@ using TomsTools.Data;
 
 namespace TomsTools.Tests.Templates
 {
-	public class LocalDataSourceTests
+	public class StringTemplateSelectorTests
 	{
 		private IDataSource _dataSource;
 		private ITemplateSelector _sut;

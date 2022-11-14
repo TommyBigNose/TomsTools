@@ -6,7 +6,7 @@ using NUnit.Framework.Constraints;
 
 namespace TomsTools.Tests.Formatters
 {
-	public class TemplateSelectorTests
+	public class StringReplacerTests
 	{
 		private IStringReplacer _sut;
 

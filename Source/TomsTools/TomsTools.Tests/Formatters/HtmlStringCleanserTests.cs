@@ -22,7 +22,7 @@ namespace TomsTools.Tests.Formatters
 		}
 
 		[TestCase(TestConstants.SAMPLE_HTML)]
-		public void Should_ReplaceText(string text)
+		public void Should_ReplaceHtml(string text)
 		{
 			// Arrange
 			// Act

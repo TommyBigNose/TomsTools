@@ -3,7 +3,7 @@ using TomsTools.Guids;
 
 namespace TomsTools.Tests.General
 {
-	public class JsonStringFormatterTests
+	public class WindowsClipboardToolTests
 	{
 		private IClipboardTool _sut;
 

@@ -34,7 +34,7 @@ namespace TomsTools.Tests.Commands
 		}
 
 		[Test]
-		public void Should_Pass_When_Valid()
+		public void Should_FormatJson()
 		{
 			// Arrange
 			// Arrange
