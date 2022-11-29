@@ -11,6 +11,7 @@ Only Windows compatible (using Windows forms' Clipboard code)
 # Roadmap
 ## General
  * ✅ Command History
+ * ❌ Installer for app
 
 ## Clipboard related tools
  * ✅ Guid Generator
