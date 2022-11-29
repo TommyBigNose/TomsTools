@@ -5,13 +5,19 @@ namespace TomsTools.Commands
 	public class CommandManager
 	{
 		private readonly Stack<ICommand> commands = new();
+		private readonly Stack<string> commandHistory= new();
 
 		public void Invoke(ICommand command, string[]? args = null)
 		{
-			if (command.CanExecute())
+			if (command.CanExecute(args))
 			{
 				commands.Push(command);
 				command.Execute(args);
+				commandHistory.Push(command.ToString());
+			}
+			else 
+			{
+				commandHistory.Push($"Failed to execute command | { command.Name }");
 			}
 		}
 
@@ -27,9 +33,9 @@ namespace TomsTools.Commands
 		public string GetCommandHistory()
 		{
 			StringBuilder stringBuilder = new();
-			foreach(var command in commands)
+			foreach(var command in commandHistory)
 			{
-				stringBuilder.AppendLine(command.ToString());
+				stringBuilder.AppendLine(command);
 			}
 
 			return stringBuilder.ToString();

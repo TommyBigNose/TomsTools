@@ -19,8 +19,11 @@ namespace TomsTools.Commands
 		private string _oldCharacter;
 		private string _newCharacter;
 
+		public string Name { get; }
+
 		public StringReplacerCommand(IStringReplacer stringReplacer, IClipboardTool clipboardTool)
 		{
+			Name = "Replace";
 			_stringReplacer = stringReplacer;
 			_clipboardTool = clipboardTool;
 			_text = string.Empty;
@@ -29,9 +32,14 @@ namespace TomsTools.Commands
 		}
 
 
-		public bool CanExecute()
+		public bool CanExecute(string[]? args = null)
 		{
-			return true;
+			if (args != null)
+			{
+				return _stringReplacer.CanReplace(_clipboardTool.GetText(), args[0], args[1]);
+			}
+
+			return false;	
 		}
 
 		public void Execute(string[]? args = null)

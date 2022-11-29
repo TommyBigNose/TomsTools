@@ -8,6 +8,7 @@ namespace TomsTools.Formatters
 {
 	public interface IStringFormatter
 	{
+		bool CanFormat(string text);
 		string Format(string text);
 	}
 }

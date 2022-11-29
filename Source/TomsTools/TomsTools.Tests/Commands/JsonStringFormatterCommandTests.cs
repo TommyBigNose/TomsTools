@@ -37,7 +37,6 @@ namespace TomsTools.Tests.Commands
 		public void Should_FormatJson()
 		{
 			// Arrange
-			// Arrange
 			TestModel testModel = new TestModel()
 			{
 				Id = "FAKE-123",
@@ -51,8 +50,20 @@ namespace TomsTools.Tests.Commands
 			var result = _clipboardTool.GetText();
 
 			// Assert
-			// Assert
 			Assert.That(result, Does.Contain("\r\n"), "JsonStringFormatterCommand did not format with indentation");
+		}
+
+		[Test]
+		public void Should_NotBeAbleToExecute_When_CommandHasInvalidArgs()
+		{
+			// Arrange
+			_clipboardTool.SetText("This is not valid json {}");
+
+			// Act
+			var result = _sut.CanExecute();
+
+			// Assert
+			Assert.That(result, Is.False, "JsonStringFormatterCommand failed to notice inalid arguments");
 		}
 	}
 }

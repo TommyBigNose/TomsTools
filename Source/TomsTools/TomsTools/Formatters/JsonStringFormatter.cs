@@ -8,6 +8,22 @@ namespace TomsTools.Formatters
 {
 	public class JsonStringFormatter : IStringFormatter
 	{
+		public bool CanFormat(string text)
+		{
+			bool canFormat = true;
+
+			try
+			{
+				var obj = JsonSerializer.Deserialize<object>(text)!;
+			}
+			catch
+			{
+				canFormat = false;
+			}
+
+			return canFormat;
+		}
+
 		public string Format(string text)
 		{
 			try

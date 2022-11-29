@@ -19,15 +19,17 @@ namespace TomsTools.Commands
 		private string _text;
 		private int _templateId;
 
+		public string Name { get; }
+
 		public StringTemplateSelectorCommand(ITemplateSelector templateSelector, IClipboardTool clipboardTool)
 		{
+			Name = "Copy Template";
 			_templateSelector = templateSelector;
 			_clipboardTool = clipboardTool;
 			_text = string.Empty;
 		}
 
-
-		public bool CanExecute()
+		public bool CanExecute(string[]? args = null)
 		{
 			return true;
 		}

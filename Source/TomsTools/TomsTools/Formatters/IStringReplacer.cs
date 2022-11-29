@@ -8,6 +8,7 @@ namespace TomsTools.Formatters
 {
 	public interface IStringReplacer
 	{
+		bool CanReplace(string text, string oldCharacter, string newCharacter);
 		string Replace(string text, string oldCharacter, string newCharacter);
 	}
 }

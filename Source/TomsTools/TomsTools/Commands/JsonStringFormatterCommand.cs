@@ -17,17 +17,20 @@ namespace TomsTools.Commands
 		private readonly IClipboardTool _clipboardTool;
 		private string _json;
 
+		public string Name { get; }
+
 		public JsonStringFormatterCommand(IStringFormatter stringFormatter, IClipboardTool clipboardTool)
 		{
+			Name = "Format JSON";
 			_stringFormatter = stringFormatter;
 			_clipboardTool = clipboardTool;
 			_json = string.Empty;
 		}
 
 
-		public bool CanExecute()
+		public bool CanExecute(string[]? args = null)
 		{
-			return true;
+			return _stringFormatter.CanFormat(_clipboardTool.GetText());
 		}
 
 		public void Execute(string[]? args = null)

@@ -21,6 +21,19 @@ namespace TomsTools.Tests.Formatters
 		}
 
 		[Test]
+		public void Should_NotBeAbleToFormat_When_InvalidInput()
+		{
+			// Arrange
+			string jsonText = "Not valid JSON {}";
+
+			// Act
+			var result = _sut.CanFormat(jsonText);
+
+			// Assert
+			Assert.That(result, Is.False, "JsonStringFormatter failed to notice invalid JSON");
+		}
+
+		[Test]
 		public void Should_FormatJson()
 		{
 			// Arrange

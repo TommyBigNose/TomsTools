@@ -1,5 +1,6 @@
 using System.Windows.Forms;
 using TomsTools.Commands;
+using TomsTools.Formatters;
 using TomsTools.General;
 using TomsTools.Guids;
 
@@ -47,6 +48,23 @@ namespace TomsTools.Tests.Commands
 
 			// Assert
 			Assert.That(result, Does.Contain(command.ToString()), "CommandManager failed to get history of commands");
+		}
+
+		[Test]
+		public void Should_OutputToCommandHistory_When_CommandCannotExecute()
+		{
+			// Arrange
+			IStringFormatter jsonFormatter = new JsonStringFormatter();
+			IClipboardTool clipboardTool = new WindowsClipboardTool();
+			ICommand command = new JsonStringFormatterCommand(jsonFormatter, clipboardTool);
+			clipboardTool.SetText("This is not valid json {}");
+
+			// Act
+			_sut.Invoke(command);
+			var result = _sut.GetCommandHistory();
+
+			// Assert
+			Assert.That(result, Does.Contain("Failed to execute command"), "CommandManager failed to get history of commands");
 		}
 	}
 }

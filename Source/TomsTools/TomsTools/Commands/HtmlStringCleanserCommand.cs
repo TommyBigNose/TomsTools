@@ -17,15 +17,17 @@ namespace TomsTools.Commands
 		private readonly IClipboardTool _clipboardTool;
 		private string _html;
 
+		public string Name { get; }
+
 		public HtmlStringCleanserCommand(IStringCleanser stringCleanser, IClipboardTool clipboardTool)
 		{
+			Name = "HTML Cleanser";
 			_stringCleanser = stringCleanser;
 			_clipboardTool = clipboardTool;
 			_html = string.Empty;
 		}
 
-
-		public bool CanExecute()
+		public bool CanExecute(string[]? args = null)
 		{
 			return true;
 		}

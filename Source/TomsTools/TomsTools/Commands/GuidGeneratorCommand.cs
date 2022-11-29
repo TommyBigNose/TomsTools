@@ -16,13 +16,16 @@ namespace TomsTools.Commands
 		private readonly IClipboardTool _clipboardTool;
 		private Guid _guid;
 
+		public string Name { get; }
+
 		public GuidGeneratorCommand(IGuidGenerator generator, IClipboardTool clipboardTool)
 		{
+			Name = "Generate Guid";
 			_guidGenerator = generator;
 			_clipboardTool = clipboardTool;
 		}
 
-		public bool CanExecute()
+		public bool CanExecute(string[]? args = null)
 		{
 			return true;
 		}

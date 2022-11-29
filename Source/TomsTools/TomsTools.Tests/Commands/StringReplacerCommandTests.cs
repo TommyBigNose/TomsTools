@@ -49,5 +49,21 @@ namespace TomsTools.Tests.Commands
 			// Assert
 			Assert.That(result, constraint, @$"StringReplacerCommand failed the following constraint: {constraint.Description}");
 		}
+
+		[TestCase("Test", null, "")]
+		[TestCase("Test", "", null)]
+		[TestCase("Test", "", "")]
+		public void Should_NotBeAbleToExecute_When_CommandHasInvalidArgs(string text, string oldCharacter, string newCharacter)
+		{
+			// Arrange
+			string[] args = new string[] { oldCharacter, newCharacter };
+			_clipboardTool.SetText(text);
+
+			// Act
+			var result = _sut.CanExecute(args);
+
+			// Assert
+			Assert.That(result, Is.False, "StringReplacerCommand failed to notice invalid arguments");
+		}
 	}
 }
