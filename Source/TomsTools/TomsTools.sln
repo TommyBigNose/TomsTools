@@ -7,7 +7,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TomsTools", "TomsTools\Toms
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TomsTools.Tests", "TomsTools.Tests\TomsTools.Tests.csproj", "{7DBD55F3-0D57-4EFF-B6E4-E8CCE921CF8B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TomsTools.App.Forms", "TomsTools.App.Forms\TomsTools.App.Forms.csproj", "{DDB76B06-62DC-469F-8ED7-FBB8EF26B0DC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TomsTools.App.Forms", "TomsTools.App.Forms\TomsTools.App.Forms.csproj", "{DDB76B06-62DC-469F-8ED7-FBB8EF26B0DC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Files", "Files", "{6F6991B1-B09B-4187-915E-41399093CE3C}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\README.md = ..\..\README.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -50,6 +50,13 @@ namespace TomsTools.App.Forms
 			UpdateCommandHistory();
 		}
 
+		private void btnPlainText_Click(object sender, EventArgs e)
+		{
+			ICommand command = new PlainTextFormatterCommand(ClipboardTool);
+			CommandManager.Invoke(command);
+			UpdateCommandHistory();
+		}
+
 		private void UpdateCommandHistory()
 		{
 			txtCommandHistory.Text = CommandManager.GetCommandHistory();

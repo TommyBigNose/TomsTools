@@ -16,7 +16,7 @@ namespace TomsTools.General
 				string message = "Cannot set clipboard to null or empty value";
 				throw new ArgumentNullException(message);
 			}
-			Thread thread = new(() => Clipboard.SetText(text));
+			Thread thread = new(() => Clipboard.SetText(text, TextDataFormat.Text));
 			thread.SetApartmentState(ApartmentState.STA); //Set the thread to STA
 			thread.Start();
 			thread.Join(); //Wait for the thread to end
@@ -26,7 +26,7 @@ namespace TomsTools.General
 		{
 			string text = string.Empty;
 
-			Thread thread = new(() => text = Clipboard.GetText());
+			Thread thread = new(() => text = Clipboard.GetText(TextDataFormat.Text));
 			thread.SetApartmentState(ApartmentState.STA); //Set the thread to STA
 			thread.Start();
 			thread.Join(); //Wait for the thread to end

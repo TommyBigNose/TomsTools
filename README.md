@@ -20,3 +20,4 @@ Only Windows compatible (using Windows forms' Clipboard code)
  * ✅ HTML Cleanser
  * ❌ String Templates
    * Available, but not customizable yet
+ * ✅ Plain Text

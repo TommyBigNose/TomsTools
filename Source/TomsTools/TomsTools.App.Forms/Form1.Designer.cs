@@ -69,6 +69,7 @@ namespace TomsTools.App.Forms
 			this.btnHtmlCleanser = new System.Windows.Forms.Button();
 			this.btnCopyTemplate = new System.Windows.Forms.Button();
 			this.cmbTemplates = new System.Windows.Forms.ComboBox();
+			this.btnPlainText = new System.Windows.Forms.Button();
 			this.SuspendLayout();
 			// 
 			// btnGenerateGuid
@@ -88,7 +89,7 @@ namespace TomsTools.App.Forms
 			this.txtCommandHistory.Name = "txtCommandHistory";
 			this.txtCommandHistory.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
 			this.txtCommandHistory.Size = new System.Drawing.Size(342, 232);
-			this.txtCommandHistory.TabIndex = 1;
+			this.txtCommandHistory.TabIndex = 1000;
 			this.txtCommandHistory.WordWrap = false;
 			// 
 			// lblCommandHistory
@@ -105,7 +106,7 @@ namespace TomsTools.App.Forms
 			this.btnFormatJson.Location = new System.Drawing.Point(12, 41);
 			this.btnFormatJson.Name = "btnFormatJson";
 			this.btnFormatJson.Size = new System.Drawing.Size(100, 23);
-			this.btnFormatJson.TabIndex = 3;
+			this.btnFormatJson.TabIndex = 10;
 			this.btnFormatJson.Text = "Format JSON";
 			this.btnFormatJson.UseVisualStyleBackColor = true;
 			this.btnFormatJson.Click += new System.EventHandler(this.btnFormatJson_Click);
@@ -115,7 +116,7 @@ namespace TomsTools.App.Forms
 			this.btnReplace.Location = new System.Drawing.Point(12, 71);
 			this.btnReplace.Name = "btnReplace";
 			this.btnReplace.Size = new System.Drawing.Size(100, 23);
-			this.btnReplace.TabIndex = 4;
+			this.btnReplace.TabIndex = 20;
 			this.btnReplace.Text = "Replace";
 			this.btnReplace.UseVisualStyleBackColor = true;
 			this.btnReplace.Click += new System.EventHandler(this.btnReplace_Click);
@@ -126,7 +127,7 @@ namespace TomsTools.App.Forms
 			this.txtReplaceOld.Name = "txtReplaceOld";
 			this.txtReplaceOld.PlaceholderText = "Old Character";
 			this.txtReplaceOld.Size = new System.Drawing.Size(100, 23);
-			this.txtReplaceOld.TabIndex = 5;
+			this.txtReplaceOld.TabIndex = 30;
 			// 
 			// txtReplaceNew
 			// 
@@ -134,7 +135,7 @@ namespace TomsTools.App.Forms
 			this.txtReplaceNew.Name = "txtReplaceNew";
 			this.txtReplaceNew.PlaceholderText = "New Character";
 			this.txtReplaceNew.Size = new System.Drawing.Size(100, 23);
-			this.txtReplaceNew.TabIndex = 6;
+			this.txtReplaceNew.TabIndex = 40;
 			// 
 			// lblWith
 			// 
@@ -150,7 +151,7 @@ namespace TomsTools.App.Forms
 			this.btnHtmlCleanser.Location = new System.Drawing.Point(12, 100);
 			this.btnHtmlCleanser.Name = "btnHtmlCleanser";
 			this.btnHtmlCleanser.Size = new System.Drawing.Size(100, 23);
-			this.btnHtmlCleanser.TabIndex = 8;
+			this.btnHtmlCleanser.TabIndex = 50;
 			this.btnHtmlCleanser.Text = "HTML Cleanser";
 			this.btnHtmlCleanser.UseVisualStyleBackColor = true;
 			this.btnHtmlCleanser.Click += new System.EventHandler(this.btnHtmlCleanser_Click);
@@ -160,7 +161,7 @@ namespace TomsTools.App.Forms
 			this.btnCopyTemplate.Location = new System.Drawing.Point(12, 129);
 			this.btnCopyTemplate.Name = "btnCopyTemplate";
 			this.btnCopyTemplate.Size = new System.Drawing.Size(100, 23);
-			this.btnCopyTemplate.TabIndex = 9;
+			this.btnCopyTemplate.TabIndex = 60;
 			this.btnCopyTemplate.Text = "Copy Template";
 			this.btnCopyTemplate.UseVisualStyleBackColor = true;
 			this.btnCopyTemplate.Click += new System.EventHandler(this.btnCopyTemplate_Click);
@@ -173,13 +174,24 @@ namespace TomsTools.App.Forms
 			this.cmbTemplates.Location = new System.Drawing.Point(118, 129);
 			this.cmbTemplates.Name = "cmbTemplates";
 			this.cmbTemplates.Size = new System.Drawing.Size(158, 23);
-			this.cmbTemplates.TabIndex = 10;
+			this.cmbTemplates.TabIndex = 70;
+			// 
+			// btnPlainText
+			// 
+			this.btnPlainText.Location = new System.Drawing.Point(12, 158);
+			this.btnPlainText.Name = "btnPlainText";
+			this.btnPlainText.Size = new System.Drawing.Size(100, 23);
+			this.btnPlainText.TabIndex = 80;
+			this.btnPlainText.Text = "Plain Text";
+			this.btnPlainText.UseVisualStyleBackColor = true;
+			this.btnPlainText.Click += new System.EventHandler(this.btnPlainText_Click);
 			// 
 			// Form1
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(800, 450);
+			this.Controls.Add(this.btnPlainText);
 			this.Controls.Add(this.cmbTemplates);
 			this.Controls.Add(this.btnCopyTemplate);
 			this.Controls.Add(this.btnHtmlCleanser);
@@ -213,5 +225,6 @@ namespace TomsTools.App.Forms
 		private Button btnHtmlCleanser;
 		private Button btnCopyTemplate;
 		private ComboBox cmbTemplates;
+		private Button btnPlainText;
 	}
 }
